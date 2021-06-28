@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Linear Algebra - Row Reduction</string>
+
+    <string name="reduction_form_prompt">Choose Reduction Form</string>
+    <string name="row_number_prompt">Select number of rows</string>
+    <string name="column_number_prompt">Select number of columns</string>
+
+    <string-array name="reduction_forms">
+        <item>Reduced Echelon Form</item>
+        <item>Row Reduced Echelon Form</item>
+    </string-array>
+    
+    <string-array name="number_of_rows_or_columns">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    
+    <string name="solve">Solve</string>
+    <string name="solution">Solution</string>
+</resources>
