@@ -1,9 +1,23 @@
 <resources>
     <string name="app_name">Linear Algebra - Row Reduction</string>
 
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    
+    <string name="row_reduction_menu_item_title">Row Reduction</string>
+    <string name="simultaneous_menu_item_short_title">Simultaneous Equations</string>
+    <string name="simultaneous_menu_item_long_title">Simultaneous Equations / \nLinear Combination</string>
+    <string name="inverse_menu_item_title">Inverse of Matrix</string>
+    <string name="linear_independence_menu_item_title">Linear Dependency</string>
+    <string name="rank_menu_item_title">Rank of Matrix</string>
+    <string name="help_menu_item_title">Help</string>
+    <string name="about_menu_item_title">About</string>
+
     <string name="reduction_form_prompt">Choose Reduction Form</string>
-    <string name="row_number_prompt">Select number of rows</string>
-    <string name="column_number_prompt">Select number of columns</string>
+    <string name="row_number_prompt">Select Number of Rows</string>
+    <string name="column_number_prompt">Select Number of Columns</string>
+    <string name="unknown_variables_number_prompt">Select Number of Unknown Variables</string>
+    <string name="dimension_number_prompt">Select Dimension of Matrix</string>
 
     <string-array name="reduction_forms">
         <item>Reduced Echelon Form</item>
@@ -22,7 +36,20 @@
         <item>9</item>
         <item>10</item>
     </string-array>
-    
+
+    <string-array name="square_matrix_dimensions">
+        <item>1 x 1</item>
+        <item>2 x 2</item>
+        <item>3 x 3</item>
+        <item>4 x 4</item>
+        <item>5 x 5</item>
+        <item>6 x 6</item>
+        <item>7 x 7</item>
+        <item>8 x 8</item>
+        <item>9 x 9</item>
+        <item>10 x 10</item>
+    </string-array>
+
     <string name="solve">Solve</string>
     <string name="solution">Solution</string>
 </resources>

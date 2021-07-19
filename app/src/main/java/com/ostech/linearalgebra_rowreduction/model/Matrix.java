@@ -1,12 +1,14 @@
 package com.ostech.linearalgebra_rowreduction.model;
 
-import org.apache.commons.math3.fraction.*;
-
 import android.content.Context;
 import android.os.Build;
-
 import android.view.View;
-import android.widget.*;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import org.apache.commons.math3.fraction.BigFraction;
 
 public class Matrix {
     private int numberOfRows;
@@ -241,33 +243,23 @@ public class Matrix {
             if (hasUniqueSolution()) {
                 BigFraction[] solutions = getSolutions();
 
-                resultLayout.addView(getCurrentSolution("The solution to this system of " +
-                                                                "equations is:", false,
+                resultLayout.addView(getCurrentSolution("\n\n\nThe solution to this system of " +
+                                                                "equations is:\n", false,
                                                                 context));
 
                 for (int i = 0; i < solutions.length; i++) {
                     resultLayout.addView(getCurrentSolution("x" + (i + 1) + " = " + ((solutions[i].getDenominatorAsInt() == 1) ?
                                                                 solutions[i].getNumerator() :
-                                                                solutions[i]),
+                                                                toMoreReadableFraction(solutions[i])),
                                                     false, context));
-
-                    if (i < solutions.length - 1) {
-                        if (i == solutions.length - 2) {
-                            resultLayout.addView(getCurrentSolution(" and ",
-                                    false, context));
-                        } else {
-                            resultLayout.addView(getCurrentSolution(", ",
-                                    false, context));
-                        }   //  end of else
-                    }   //  end of if
                 }   //  end of for
             } else {
-                resultLayout.addView(getCurrentSolution("This system of equations has no " +
+                resultLayout.addView(getCurrentSolution("\n\n\nThis system of equations has no " +
                                                                 "unique solution",
                                             false, context));
             }
         } else {
-            resultLayout.addView(getCurrentSolution("Matrix is not an augmented matrix",
+            resultLayout.addView(getCurrentSolution("\n\n\nMatrix is not an augmented matrix",
                                                             false, context));
         }
     }   //  end of solveSimultaneousEquations
@@ -321,11 +313,11 @@ public class Matrix {
                 }   //  end of for j
             }   //  end of for i
 
-            resultLayout.addView(getCurrentSolution("Inverse of the matrix is:",
+            resultLayout.addView(getCurrentSolution("\n\n\nInverse of the matrix is:",
                                         false, context));
             resultLayout.addView(inverseMatrix.displayMatrix(context));
         } else {
-            resultLayout.addView(getCurrentSolution("This matrix is not a square matrix",
+            resultLayout.addView(getCurrentSolution("\n\n\nThis matrix is not a square matrix",
                                                     false, context));
         }   //  end of else
     }   //  end of getInverse()
@@ -335,7 +327,7 @@ public class Matrix {
 
         int numberOfNonZeroRows = getNumberOfNonZeroRows();
 
-        resultLayout.addView(getCurrentSolution("The rank of this matrix is " + numberOfNonZeroRows
+        resultLayout.addView(getCurrentSolution("\n\n\nThe rank of this matrix is " + numberOfNonZeroRows
                             + " since it has " + numberOfNonZeroRows + " non-zero rows",
                             false, context));
     }   //  end of getRank()
@@ -361,19 +353,21 @@ public class Matrix {
         boolean hasUniqueSolution = hasUniqueSolution();
 
         if (hasUniqueSolution) {
-            resultLayout.addView(getCurrentSolution("This system is linearly independent since ",
+            resultLayout.addView(getCurrentSolution("\n\n\nThis system is linearly independent since ",
                                                     false, context));
         } else {
-            resultLayout.addView(getCurrentSolution("This system is linearly dependent since ",
+            resultLayout.addView(getCurrentSolution("\n\n\nThis system is linearly dependent since ",
                                                     false, context));
         }
 
+        String solution = "";
         for (int i = 1; i < numberOfColumns; i++) {
-            resultLayout.addView(getCurrentSolution("x" + i + ((hasUniqueSolution) ? " = "
-                                                    : " is not equals "), false, context));
+            solution += "x" + i + ((hasUniqueSolution) ? " = " : " is not equals ");
         }
 
-        resultLayout.addView(getCurrentSolution(" 0", false, context));
+        solution += " 0";
+
+        resultLayout.addView(getCurrentSolution("\n\n\n" + solution, false, context));
     }   //  end of checkLinearDependency()
 
     public TableLayout displayMatrix(Context context) {

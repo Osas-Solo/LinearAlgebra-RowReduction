@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group>
+        <item
+            android:id="@+id/row_reduction_menu_item"
+            android:title="@string/row_reduction_menu_item_title"/>
+        <item
+            android:id="@+id/simultaneous_menu_item"
+            android:title="@string/simultaneous_menu_item_short_title"
+            />
+        <item
+            android:id="@+id/inverse_menu_item"
+            android:title="@string/inverse_menu_item_title"/>
+        <item
+            android:id="@+id/linear_independence_menu_item"
+            android:title="@string/linear_independence_menu_item_title"/>
+        <item
+            android:id="@+id/rank_menu_item"
+            android:title="@string/rank_menu_item_title"/>
+    </group>
+
+    <group>
+        <item
+            android:id="@+id/help_menu_item"
+            android:title="@string/help_menu_item_title"/>
+        <item
+            android:id="@+id/about_menu_item"
+            android:title="@string/about_menu_item_title"/>
+    </group>
+</menu>
