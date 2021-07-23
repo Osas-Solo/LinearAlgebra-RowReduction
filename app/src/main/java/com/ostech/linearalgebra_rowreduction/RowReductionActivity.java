@@ -58,11 +58,19 @@ public class RowReductionActivity extends AppCompatActivity
                     switchFragment(new RowReductionFragment());
                 }
                 break;
+
             case R.id.simultaneous_menu_item:
                 if (!(onScreenFragment instanceof SimultaneousEquationsFragment)) {
                     switchFragment(new SimultaneousEquationsFragment());
                 }
                 break;
+
+            case R.id.inverse_menu_item:
+                if (!(onScreenFragment instanceof InverseFragment)) {
+                    switchFragment(new InverseFragment());
+                }
+                break;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

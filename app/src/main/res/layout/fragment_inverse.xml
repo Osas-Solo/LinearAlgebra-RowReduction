@@ -27,12 +27,12 @@
                 android:padding="10dp"/>
 
             <Spinner
-                android:id="@+id/unknown_variables_number_selector"
+                android:id="@+id/inverse_dimension_selector"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:entries="@array/number_of_rows_or_columns"
+                android:entries="@array/square_matrix_dimensions"
                 android:layout_gravity="center_horizontal"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
@@ -47,18 +47,19 @@
             android:layout_gravity="center">
 
             <TableLayout
-                android:id="@+id/simultaneous_equations_matrix_layout"
+                android:id="@+id/inverse_matrix_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal"
-                android:layout_marginVertical="30dp"
-                android:layout_marginHorizontal="30dp"
-                android:padding="30dp" />
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal"
+                android:padding="10dp"/>
 
         </HorizontalScrollView>
 
         <Button
-            android:id="@+id/simultaneous_equations_solve_button"
+            android:id="@+id/inverse_solve_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -69,7 +70,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/simultaneous_equations_result_layout"
+                android:id="@+id/inverse_result_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
