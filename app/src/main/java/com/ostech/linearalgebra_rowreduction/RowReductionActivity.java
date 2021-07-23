@@ -77,6 +77,18 @@ public class RowReductionActivity extends AppCompatActivity
                 }
                 break;
 
+            case R.id.rank_menu_item:
+                if (!(onScreenFragment instanceof RankFragment)) {
+                    switchFragment(new RankFragment());
+                }
+                break;
+
+            case R.id.help_menu_item:
+                break;
+
+            case R.id.about_menu_item:
+                break;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

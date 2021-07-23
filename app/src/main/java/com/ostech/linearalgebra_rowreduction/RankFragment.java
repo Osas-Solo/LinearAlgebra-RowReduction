@@ -16,36 +16,36 @@ import org.apache.commons.math3.fraction.*;
 
 import static android.view.ViewGroup.LayoutParams.*;
 
-public class LinearDependencyFragment extends Fragment {
+public class RankFragment extends Fragment {
     private static final String TAG = "RowReductionActivity";
 
-    private Spinner linearDependencyRowNumberSelector;
-    private Spinner linearDependencyColumnNumberSelector;
+    private Spinner rankRowNumberSelector;
+    private Spinner rankColumnNumberSelector;
 
-    private TableLayout linearDependencyMatrixLayout;
+    private TableLayout rankMatrixLayout;
 
-    private Button linearDependencySolveButton;
+    private Button rankSolveButton;
 
-    private LinearLayout linearDependencyResultLayout;
+    private LinearLayout rankResultLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_linear_dependency, container, false);
+        View view = inflater.inflate(R.layout.fragment_rank, container, false);
 
-        linearDependencyRowNumberSelector = view.findViewById(R.id.linear_dependency_row_number_selector);
-        linearDependencyColumnNumberSelector = view.findViewById(R.id.linear_dependency_column_number_selector);
+        rankRowNumberSelector = view.findViewById(R.id.rank_row_number_selector);
+        rankColumnNumberSelector = view.findViewById(R.id.rank_column_number_selector);
 
-        linearDependencyMatrixLayout = view.findViewById(R.id.linear_dependency_matrix_layout);
+        rankMatrixLayout = view.findViewById(R.id.rank_matrix_layout);
 
-        linearDependencySolveButton = view.findViewById(R.id.linear_dependency_solve_button);
+        rankSolveButton = view.findViewById(R.id.rank_solve_button);
 
-        linearDependencyResultLayout = view.findViewById(R.id.linear_dependency_result_layout);
+        rankResultLayout = view.findViewById(R.id.rank_result_layout);
 
-        linearDependencyRowNumberSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        rankRowNumberSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 updateMatrixLayout();
-                linearDependencyResultLayout.removeAllViews();
+                rankResultLayout.removeAllViews();
             }
 
             @Override
@@ -54,11 +54,11 @@ public class LinearDependencyFragment extends Fragment {
             }
         });
 
-        linearDependencyColumnNumberSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        rankColumnNumberSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 updateMatrixLayout();
-                linearDependencyResultLayout.removeAllViews();
+                rankResultLayout.removeAllViews();
             }
 
             @Override
@@ -67,7 +67,7 @@ public class LinearDependencyFragment extends Fragment {
             }
         });
 
-        linearDependencySolveButton.setOnClickListener(v -> checkLinearDependency());
+        rankSolveButton.setOnClickListener(v -> getRank());
 
         return view;
     }   //  end of onCreateView()
@@ -76,14 +76,14 @@ public class LinearDependencyFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().setTitle(R.string.linear_dependency_menu_item_title);
+        getActivity().setTitle(R.string.rank_menu_item_title);
     }
 
     private void updateMatrixLayout() {
-        int numberOfRows = Integer.parseInt(linearDependencyRowNumberSelector.getSelectedItem().toString());
-        int numberOfColumns = Integer.parseInt(linearDependencyColumnNumberSelector.getSelectedItem().toString());
+        int numberOfRows = Integer.parseInt(rankRowNumberSelector.getSelectedItem().toString());
+        int numberOfColumns = Integer.parseInt(rankColumnNumberSelector.getSelectedItem().toString());
 
-        linearDependencyMatrixLayout.removeAllViews();
+        rankMatrixLayout.removeAllViews();
 
         GradientDrawable inputBackground = getInputBackground();
 
@@ -99,7 +99,7 @@ public class LinearDependencyFragment extends Fragment {
                 currentRow.addView(getMatrixElementInput(inputBackground), layoutParams);
             }   //  end of for j
 
-            linearDependencyMatrixLayout.addView(currentRow);
+            rankMatrixLayout.addView(currentRow);
         }   //  end of for i
     }   //  end of updateMatrixLayout()
 
@@ -125,27 +125,26 @@ public class LinearDependencyFragment extends Fragment {
         return matrixElementInput;
     }   //  end of getMatrixElementInput()
 
-    private void checkLinearDependency() {
-        linearDependencyResultLayout.removeAllViews();
+    private void getRank() {
+        rankResultLayout.removeAllViews();
         TextView solutionHeader = new TextView(getActivity());
         solutionHeader.setText(R.string.solution);
         solutionHeader.setTextSize(34);
-        linearDependencyResultLayout.addView(solutionHeader);
+        rankResultLayout.addView(solutionHeader);
 
-        int numberOfRows = linearDependencyMatrixLayout.getChildCount();
-        int numberOfColumns = ((TableRow) linearDependencyMatrixLayout.getChildAt(0)).getChildCount();
+        int numberOfRows = rankMatrixLayout.getChildCount();
+        int numberOfColumns = ((TableRow) rankMatrixLayout.getChildAt(0)).getChildCount();
 
-        Matrix matrix = new Matrix(numberOfRows, numberOfColumns + 1);
+        Matrix matrix = new Matrix(numberOfRows, numberOfColumns);
 
         setMatrixElements(matrix);
-        matrix.setAugmentedWithSolution(true);
 
-        matrix.checkLinearDependency(linearDependencyResultLayout, getActivity());
-    }   //  end of checkLinearDependency()
+        matrix.getRank(rankResultLayout, getActivity());
+    }   //  end of getRank()
 
     private void setMatrixElements(Matrix matrix) {
-        for (int i = 0; i < linearDependencyMatrixLayout.getChildCount(); i++) {
-            TableRow currentRow = (TableRow) linearDependencyMatrixLayout.getChildAt(i);
+        for (int i = 0; i < rankMatrixLayout.getChildCount(); i++) {
+            TableRow currentRow = (TableRow) rankMatrixLayout.getChildAt(i);
 
             for (int j = 0; j < currentRow.getChildCount(); j++) {
                 String matrixElementInputText = ((EditText) currentRow.getChildAt(j)).getText().toString();
@@ -179,8 +178,6 @@ public class LinearDependencyFragment extends Fragment {
                     }   //  end of MathParseException catch
                 }   //  end of else
             }   //  end of for j
-
-            matrix.elements[i][matrix.getNumberOfColumns() - 1] = BigFraction.ZERO;
         }   //  end of for i
     }   //  end of setMatrixElements()
 }   //  end of class
