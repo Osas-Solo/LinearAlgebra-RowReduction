@@ -13,8 +13,8 @@
             android:id="@+id/inverse_menu_item"
             android:title="@string/inverse_menu_item_title"/>
         <item
-            android:id="@+id/linear_independence_menu_item"
-            android:title="@string/linear_independence_menu_item_title"/>
+            android:id="@+id/linear_dependency_menu_item"
+            android:title="@string/linear_dependency_menu_item_title"/>
         <item
             android:id="@+id/rank_menu_item"
             android:title="@string/rank_menu_item_title"/>

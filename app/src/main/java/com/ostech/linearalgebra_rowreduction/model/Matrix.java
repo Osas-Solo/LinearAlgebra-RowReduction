@@ -30,7 +30,7 @@ public class Matrix {
     }
 
     public void setAugmentedWithSolution(boolean isAugmentedWithSolution) {
-        this.isAugmentedWithSolution = (numberOfColumns == numberOfRows + 1) && isAugmentedWithSolution;
+        this.isAugmentedWithSolution = isAugmentedWithSolution;
     }
 
     public boolean isAugmentedWithInverse() {
@@ -38,7 +38,7 @@ public class Matrix {
     }
 
     public void setAugmentedWithInverse(boolean isAugmentedWithInverse) {
-        this.isAugmentedWithInverse = numberOfColumns == 2 * numberOfRows;
+        this.isAugmentedWithInverse = numberOfColumns == (2 * numberOfRows);
     }
 
     public BigFraction[][] elements;
@@ -362,12 +362,26 @@ public class Matrix {
 
         String solution = "";
         for (int i = 1; i < numberOfColumns; i++) {
-            solution += "x" + i + ((hasUniqueSolution) ? " = " : " is not equals ");
+            if (hasUniqueSolution) {
+                solution += "x" + i + " = ";
+            } else {
+                solution += "x" + i;
+
+                if (i == numberOfColumns - 1) {
+                    continue;
+                } else {
+                    solution += (i != (numberOfColumns - 2)) ? ", " : " and ";
+                }
+            }
+        }
+
+        if (!hasUniqueSolution) {
+            solution += " are not equals ";
         }
 
         solution += " 0";
 
-        resultLayout.addView(getCurrentSolution("\n\n\n" + solution, false, context));
+        resultLayout.addView(getCurrentSolution("" + solution, false, context));
     }   //  end of checkLinearDependency()
 
     public TableLayout displayMatrix(Context context) {
@@ -381,7 +395,7 @@ public class Matrix {
             int numberOfVariables = numberOfColumns - 1;
 
             for (int i = 0; i < numberOfVariables; i++) {
-                headerRow.addView(getCurrentSolution("x" + (i + 1), false, context),
+                headerRow.addView(getCurrentSolution("x" + (i + 1), true, context),
                                     layoutParams);
             }   //  end of for
 

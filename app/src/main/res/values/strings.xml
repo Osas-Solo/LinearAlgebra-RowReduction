@@ -8,7 +8,7 @@
     <string name="simultaneous_menu_item_short_title">Simultaneous Equations</string>
     <string name="simultaneous_menu_item_long_title">Simultaneous Equations / \nLinear Combination</string>
     <string name="inverse_menu_item_title">Inverse of Matrix</string>
-    <string name="linear_independence_menu_item_title">Linear Dependency</string>
+    <string name="linear_dependency_menu_item_title">Linear Dependency</string>
     <string name="rank_menu_item_title">Rank of Matrix</string>
     <string name="help_menu_item_title">Help</string>
     <string name="about_menu_item_title">About</string>

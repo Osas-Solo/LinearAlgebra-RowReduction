@@ -71,6 +71,12 @@ public class RowReductionActivity extends AppCompatActivity
                 }
                 break;
 
+            case R.id.linear_dependency_menu_item:
+                if (!(onScreenFragment instanceof LinearDependencyFragment)) {
+                    switchFragment(new LinearDependencyFragment());
+                }
+                break;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
