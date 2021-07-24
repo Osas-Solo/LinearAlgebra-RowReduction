@@ -52,4 +52,25 @@
 
     <string name="solve">Solve</string>
     <string name="solution">Solution</string>
+
+    <string name="version_title"><b>Version:</b></string>
+    <string name="github_repository_title"><b>Project Source Code:</b></string>
+    <string name="github_repository_link">
+        <a href="https://github.com/Osas-Solo/LinearAlgebra-RowReduction">
+            www.Github.com/Osas-Solo/LinearAlgebra-RowReduction
+        </a>
+    </string>
+    <string name="developer_title"><b>Developer:</b></string>
+    <string name="developer_name">Osaremhen Ukpebor</string>
+    <string name="contacts_title"><b>Contact</b></string>
+    <string name="email_title"><b>Email:</b></string>
+    <string name="email_address"><a href="mailto:Osas.Solo25@gmail.com">Osas.Solo25@gmail.com</a></string>
+    <string name="twitter_title"><b>Twitter:</b></string>
+    <string name="twitter_handle"><a href="https://twitter.com/OsasSolo">OsasSolo</a></string>
+    <string name="github_title"><b>Github:</b></string>
+    <string name="github_profile">
+        <a href="https://github.com/Osas-Solo">
+            www.Github.com/Osas-Solo
+        </a>
+    </string>
 </resources>

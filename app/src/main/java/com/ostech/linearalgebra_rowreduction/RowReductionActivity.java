@@ -87,6 +87,9 @@ public class RowReductionActivity extends AppCompatActivity
                 break;
 
             case R.id.about_menu_item:
+                if (!(onScreenFragment instanceof AboutFragment)) {
+                    switchFragment(new AboutFragment());
+                }
                 break;
 
             default:

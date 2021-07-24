@@ -328,7 +328,8 @@ public class Matrix {
         int numberOfNonZeroRows = getNumberOfNonZeroRows();
 
         resultLayout.addView(getCurrentSolution("\n\n\nThe rank of this matrix is " + numberOfNonZeroRows
-                            + " since it has " + numberOfNonZeroRows + " non-zero rows",
+                            + " since it has " + numberOfNonZeroRows + " non-zero row" +
+                            ((numberOfNonZeroRows > 1) ? "s" : ""),
                             false, context));
     }   //  end of getRank()
 
