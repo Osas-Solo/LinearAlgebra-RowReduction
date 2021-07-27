@@ -13,15 +13,15 @@
     <string name="help_menu_item_title">Help</string>
     <string name="about_menu_item_title">About</string>
 
-    <string name="reduction_form_prompt">Choose Reduction Form</string>
-    <string name="row_number_prompt">Select Number of Rows</string>
-    <string name="column_number_prompt">Select Number of Columns</string>
-    <string name="unknown_variables_number_prompt">Select Number of Unknown Variables</string>
-    <string name="dimension_number_prompt">Select Dimension of Matrix</string>
+    <string name="reduction_form_prompt"><b>Choose Reduction Form</b></string>
+    <string name="row_number_prompt"><b>Select Number of Rows</b></string>
+    <string name="column_number_prompt"><b>Select Number of Columns</b></string>
+    <string name="unknown_variables_number_prompt"><b>Select Number of Unknown Variables</b></string>
+    <string name="dimension_number_prompt"><b>Select Dimension of Matrix</b></string>
 
     <string-array name="reduction_forms">
-        <item>Reduced Echelon Form</item>
-        <item>Row Reduced Echelon Form</item>
+        <item>Row Echelon Form</item>
+        <item>Reduced Row Echelon Form</item>
     </string-array>
     
     <string-array name="number_of_rows_or_columns">
@@ -72,5 +72,156 @@
         <a href="https://github.com/Osas-Solo">
             www.Github.com/Osas-Solo
         </a>
+    </string>
+
+    <string name="help_text_1">
+        The purpose of row reduction is to get the matrix into Reduced Echelon Form (REF) or Reduced
+        Row Echelon Form (RREF).\n\n
+
+        For example, for the matrix:\n
+        \ta1    \ta2    \ta3    \ta4\n
+        \tb1    \tb2    \tb3    \tb4\n
+        \tc1    \tc2    \tc3    \tc4\n\n
+
+        The REF would be in this form:\n
+        \ta1    \ta2    \ta3    \ta4\n
+        \t 0    \tb2    \tb3    \tb4\n
+        \t 0    \t 0    \tc3    \tc4\n\n
+
+        While the RREF would be in this form:\n
+        \ta1    \t 0    \t 0    \ta4\n
+        \t 0    \tb2    \t 0    \tb4\n
+        \t 0    \t 0    \tc3    \tc4\n\n
+    </string>
+    
+    <string name="help_text_2">
+        For a matrix to be in REF, it has to satisfy these conditions:\n
+        - All rows consisting of only zeroes should be at the bottom.\n
+        - The leading entry (pivot) of a non-zero row is always to the right of the leading entry of
+        the row above it.\n
+
+        \n\nWhile for a matrix to be in RREF, it has to satisfy these conditions:\n
+        - It has to be in REF.\n
+        - The leading entry in each non-zero row is a 1 (called a leading 1).\n
+        - Each column containing a leading 1 has zeros in all its other entries.\n
+
+        \n\nIt should be noted that REF of matrices are not unique, therefore the entries may differ.
+        But the RREF of matrices are always unique.
+    </string>
+
+    <string name="help_text_3">
+        To carry out row reduction on a matrix, the following operations can be performed on each rows:\n
+        - Divide a row by a non-zero constant. This is denoted in the app as R1 / 3. This means row 1
+            is divided by 3.\n
+        - Add two rows together to replace one of the rows. This is denoted in the app as R1 = R1 + R2.
+            This means set row 1 to row 1 plus row 2.\n
+        - Add a multiple of one row to another row to replace one of the rows. This is denoted in
+            the app as R1 = R1 + (3) R2. This means set row 1 to row 1 plus row 2 multiplied by 3.\n
+        - Interchange rows. This is denoted in the app as R1 &lt;--&gt; R2. This means interchange
+            row 1 and row 2.\n
+    </string>
+    
+    <string name="help_text_4">
+        The algorithm used to get the REF of a matrix in this app is as follows:\n\n
+
+        for i = 0 to numberOfRows - 2\n
+        \tpivotColumn = -1\n
+        \twhile j &lt; numberOfColumns\n
+        \t\tif element at row i, column j is not equals 0\n
+        \t\t\tpivotColumn = j\n
+        \t\t\tbreak\n\n
+
+        \tif element at row i, column pivotColumn is not equals 1\n
+        \t\tfor j = i + 1 to numberOfRows - 1\n
+        \t\t\tif pivotColumn is not equals -1\n
+        \t\t\t\tif element at row j, column pivotColumn equals 1 or
+                    (pivotColumn of row j &lt; pivotColumn and element at pivotColumn of row j is not equals 0)\n
+        \t\t\t\t\tinterchange row i and row j\n
+        \t\t\t\t\tbreak\n
+        \t\t\t\telse if pivotColumn is equals -1\n
+        \t\t\t\t\tif pivot of row j is not equals 0\n
+        \t\t\t\t\t\tinterchange row i and row j\n
+        \t\t\t\t\t\tbreak\n\n
+
+        \tpivotColumn = -1\n
+        \twhile j &lt; numberOfColumns\n
+        \t\tif element at row i, column j is not equals 0\n
+        \t\t\tpivotColumn = j\n
+        \t\t\tbreak\n\n
+
+        \tif pivotColumn is not equals -1\n
+        \t\tif element at row i, column pivotColumn is not equals 1\n
+        \t\t\tdivide row by pivot\n
+        \t\tfor j = i + 1 to numberOfRows - 1\n
+        \t\t\tif element at row j, column pivotColumn equals 0\n
+        \t\t\t\tadd row i multiplied by the pivot of row j and row j, then set row j to the result\n\n
+
+        \tif pivot of last row is not equals 1 or 0\n
+        \t\tdivide last row by pivot
+    </string>
+
+    <string name="help_text_5">
+        The algorithm used to get the RREF of a matrix in this app is as follows:\n\n
+
+        get the REF of the matrix
+
+        for i = numberOfRows to 0\n
+        \tpivotColumn = -1\n
+        \twhile j &lt; numberOfColumns\n
+        \t\tif element at row i, column j is not equals 0\n
+        \t\t\tpivotColumn = j\n
+        \t\t\tbreak\n\n
+
+        \tif pivotColumn is not equals - 1\n
+        \t\tfor j = i - 1 to 0\n
+        \t\t\tif element at row j, column pivotColumn is not equals 0\n
+        \t\t\t\tadd row i multiplied by the pivot of row j and row j, then set row j to the result
+    </string>
+
+    <string name="help_text_6">
+        <b>Solving Simultaneous Equations:</b>\n\n
+        For a systems of equations like:\n
+
+        2x + 3y - z = 0\n
+        x - 2y + 2z = -6\n
+        -x + 4y - z = 7\n\n
+
+        The coefficients and the solution to each equation is put into an augmented matrix:\n
+        \t 2 \t 3  \t-1  \t| \t 0\n
+        \t 1 \t-2  \t 2  \t| \t-6\n
+        \t-1 \t 4  \t-1  \t| \t 7\n\n
+
+        Then the RREF of the matrix is obtained:\n
+        \t1  \t0  \t0  \t|  \t-2\n
+        \t0  \t1  \t0  \t|  \t 1\n
+        \t0  \t0  \t1  \t|  \t-1\n\n
+
+        If an identity matrix is generated on the left side of the RREF augmented matrix, then the
+        system has a unique solution. The solution for the sample system used here would be: x = -2,
+        y = 1 and z = -1. These are the entries on the rightmost column of the RREF.
+    </string>
+    
+    <string name="help_text_7">
+        <b>Getting Inverses of Matrices:</b>\n\n
+
+        For a matrix:\n
+        \t 2 \t 3  \t-1\n
+        \t 1 \t-2  \t 2\n
+        \t-1 \t 4  \t-1\n\n
+
+        The matrix is augmented with its identity matrix:\n
+        \t 2 \t 3  \t-1  \t|  \t1  \t0  \t0\n
+        \t 1 \t-2  \t 2  \t|  \t0  \t1  \t0\n
+        \t-1 \t 4  \t-1  \t|  \t0  \t0  \t1\n\n
+
+        Then the RREF of the matrix is obtained:\n
+         \t1  \t0  \t0  \t|  \t 6/17   \t 1/17   \t-4/17\n
+         \t0  \t1  \t0  \t|  \t 1/17   \t 3/17   \t 5/17\n
+         \t0  \t0  \t1  \t|  \t-2/17   \t11/17   \t 7/17\n\n
+
+        The inverse of the matrix would be the right-side of the augmented RREF matrix:\n
+         \t 6/17   \t 1/17   \t-4/17\n
+         \t 1/17   \t 3/17   \t 5/17\n
+         \t-2/17   \t11/17   \t 7/17
     </string>
 </resources>
