@@ -4,13 +4,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.*;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
+import androidx.fragment.app.*;
 import com.google.android.material.navigation.NavigationView;
 
 public class RowReductionActivity extends AppCompatActivity
@@ -113,4 +110,13 @@ public class RowReductionActivity extends AppCompatActivity
                         .replace(R.id.dummy_container, onScreenFragment)
                         .commit();
     }   //  end of switchFragment()
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to close this app?")
+                .setPositiveButton("Yes", (dialog, which) -> finish())
+                .setNegativeButton("No", null)
+                .show();
+    }   //  end of onBackPressed()
 }   //  end of class
