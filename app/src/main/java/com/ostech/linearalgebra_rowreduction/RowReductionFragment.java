@@ -14,7 +14,7 @@ import com.ostech.linearalgebra_rowreduction.model.Matrix;
 import org.apache.commons.math3.exception.MathParseException;
 import org.apache.commons.math3.fraction.*;
 
-import static android.view.ViewGroup.LayoutParams.*;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class RowReductionFragment extends Fragment {
     private static final String TAG = "RowReductionActivity";

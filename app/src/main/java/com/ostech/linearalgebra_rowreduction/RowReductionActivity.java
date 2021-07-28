@@ -1,5 +1,6 @@
 package com.ostech.linearalgebra_rowreduction;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -8,6 +9,7 @@ import androidx.appcompat.app.*;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.*;
+
 import com.google.android.material.navigation.NavigationView;
 
 public class RowReductionActivity extends AppCompatActivity
@@ -22,6 +24,8 @@ public class RowReductionActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_row_reduction);
 
